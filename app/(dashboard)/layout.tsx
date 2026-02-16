@@ -6,9 +6,22 @@ import { useBetting } from '@/components/providers/BettingProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 
+import { useRouter } from 'next/navigation';
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { showBetSuccess } = useBetting();
+  const { showBetSuccess, isAuth } = useBetting();
+  const router = useRouter();
   const MDiv = motion.div as any;
+
+  React.useEffect(() => {
+    if (!isAuth) {
+      router.push('/login');
+    }
+  }, [isAuth, router]);
+
+  if (!isAuth) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">

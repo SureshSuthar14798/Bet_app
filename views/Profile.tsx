@@ -114,8 +114,8 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
             <p className="text-sm font-black text-slate-900 dark:text-white">$ 0.12</p>
           </div>
           <div className="w-full flex gap-2 items-center">
-            <button className="w-full bg-neon-red text-white text-[9px] font-black uppercase tracking-widest py-1.5 rounded-lg hover:brightness-110 transition-all">Deposit</button>
-            <button className="w-full bg-slate-800 text-white text-[9px] font-black uppercase tracking-widest py-1.5 rounded-lg hover:brightness-110 transition-all">Withdrawal</button>
+            <button onClick={() => onNavigate?.('wallet')} className="w-full bg-neon-red text-white text-[9px] font-black uppercase tracking-widest py-1.5 rounded-lg hover:brightness-110 transition-all">Deposit</button>
+            <button onClick={() => onNavigate?.('withdraw')} className="w-full bg-slate-800 text-white text-[9px] font-black uppercase tracking-widest py-1.5 rounded-lg hover:brightness-110 transition-all">Withdrawal</button>
           </div>
         </div>
 
@@ -128,7 +128,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
             <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-white/40 leading-none">My Profit</p>
             <p className="text-sm font-black text-slate-900 dark:text-white">$ 532.49</p>
           </div>
-          <button className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-white text-[9px] font-black uppercase tracking-widest py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-all mt-auto">Bet History</button>
+          <button onClick={() => onNavigate?.('my-bets')} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-white text-[9px] font-black uppercase tracking-widest py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-all mt-auto">Bet History</button>
         </div>
 
         {/* Referral List */}

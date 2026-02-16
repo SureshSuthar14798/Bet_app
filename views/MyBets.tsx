@@ -43,7 +43,7 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
            <History size={24} />
          </div>
          <div>
-           <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">My Stake Protocol</h1>
+           <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">My Bets History</h1>
            <p className="text-[10px] text-slate-400 dark:text-white/30 font-bold uppercase tracking-widest">History of established market positions</p>
          </div>
       </div>

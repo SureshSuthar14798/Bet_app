@@ -169,7 +169,7 @@ export default function LoginPage() {
             <p className="text-white/60 text-sm font-bold uppercase tracking-widest leading-relaxed">
               {mode === 'register' 
                 ? 'Join the elite ranks. Establish your identity.' 
-                : 'Enter your credentials to access the Nexus Protocol.'}
+                : 'Enter your credentials to access the Nexus.'}
             </p>
           </div>
 
@@ -224,7 +224,7 @@ export default function LoginPage() {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-0 bottom-3 text-white/20 hover:text-neon-red transition-colors"
                   >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    {!showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                   <div className="absolute bottom-0 left-0 h-px bg-neon-red w-0 group-focus-within:w-full transition-all duration-500" />
                 </div>
@@ -253,7 +253,7 @@ export default function LoginPage() {
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         className="absolute right-0 bottom-3 text-white/20 hover:text-neon-red transition-colors"
                       >
-                        {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                        {!showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                       </button>
                       <div className="absolute bottom-0 left-0 h-px bg-neon-red w-0 group-focus-within:w-full transition-all duration-500" />
                     </div>
@@ -295,7 +295,7 @@ export default function LoginPage() {
             </div>
 
             {/* ACTION BUTTON */}
-            <div className="pt-4">
+            <div className="pt-0 !mt-4">
               <button 
                 type="submit"
                 className="w-full bg-[#a11c1c] text-white font-black text-base uppercase tracking-[0.3em] py-5 px-8 rounded flex items-center justify-between hover:brightness-110 active:scale-[0.98] transition-all group shadow-[0_20px_40px_rgba(161,28,28,0.3)]"
@@ -308,7 +308,7 @@ export default function LoginPage() {
             </div>
 
             {/* Switch Mode */}
-            <div className="text-center pt-10">
+            <div className="text-center">
               <button 
                 type="button"
                 onClick={toggleMode}

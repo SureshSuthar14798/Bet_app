@@ -47,12 +47,26 @@ export const BettingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
   }, [theme]);
 
+  // Load state from localStorage on mount
+  useEffect(() => {
+    const storedAuth = localStorage.getItem('isAuth');
+    if (storedAuth === 'true') {
+      setIsAuth(true);
+    }
+    
+    // Optional: could also persist selections
+    // const storedSelections = localStorage.getItem('selections');
+    // if (storedSelections) setSelections(JSON.parse(storedSelections));
+  }, []);
+
   const login = useCallback(() => {
     setIsAuth(true);
+    localStorage.setItem('isAuth', 'true');
   }, []);
 
   const logout = useCallback(() => {
     setIsAuth(false);
+    localStorage.removeItem('isAuth');
   }, []);
 
   const toggleTheme = useCallback(() => {
