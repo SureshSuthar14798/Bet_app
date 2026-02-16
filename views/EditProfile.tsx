@@ -38,22 +38,22 @@ const EditProfile: React.FC<EditProfileProps> = ({ onBack }) => {
   };
 
   const labelClasses = "text-[14px] font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2 block";
-  const inputClasses = "w-full bg-white dark:bg-black/60 border border-slate-300 dark:border-white/20 rounded-lg py-3.5 px-5 text-slate-900 dark:text-white font-medium focus:outline-none focus:border-neon-red/50 focus:ring-1 focus:ring-neon-red/20 transition-all placeholder:text-slate-400 dark:placeholder:text-white/20";
+  const inputClasses = "w-full bg-white dark:bg-black/60 border border-slate-300 dark:border-white/20 rounded-lg py-2 lg:py-3.5 px-5 pr-12 text-slate-900 dark:text-white font-medium text-base focus:outline-none focus:border-neon-red/50 focus:ring-1 focus:ring-neon-red/20 transition-all placeholder:text-slate-400 dark:placeholder:text-white/20";
   const eyeIconClasses = "absolute right-4 top-1/2 -translate-y-1/2 text-[#ff3131] hover:text-rose-600 transition-colors cursor-pointer";
 
   // Use locally casted components to resolve environment-specific TS errors where motion props are not recognized
   const MDiv = motion.div as any;
 
   return (
-    <div className="max-w-xl mx-auto py-10 px-4 space-y-8">
+    <div className="max-w-xl mx-auto lg:py-6 lg:py-10 lg:px-4 space-y-6 lg:space-y-8 pb-0 md:pb-10">
       <PageHeader 
         title="Edit Profile" 
         subtitle="Update your security credentials" 
         onBack={onBack} 
       />
 
-      <GlassCard className="p-8 md:p-10 border border-slate-200 dark:border-white/10 bg-white dark:bg-black/60 shadow-2xl rounded-[2.5rem]">
-        <form onSubmit={handleSubmit} className="space-y-8">
+      <GlassCard className="p-5 md:p-8 lg:p-10 border border-slate-200 dark:border-white/10 bg-white dark:bg-black/60 shadow-2xl rounded-3xl md:rounded-[2.5rem]">
+        <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-8">
           
           {/* Current Password Section */}
           <div className="space-y-4">
@@ -142,11 +142,11 @@ const EditProfile: React.FC<EditProfileProps> = ({ onBack }) => {
           )}
 
           {/* Submit Button */}
-          <div className="pt-4">
+          <div className="pt-2 md:pt-4">
             <button 
               type="submit"
               disabled={isSuccess}
-              className="w-full bg-[#a11c1c] text-white py-5 rounded-lg font-black text-base uppercase tracking-[0.1em] shadow-xl shadow-neon-red/10 hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100"
+              className="w-full bg-[#a11c1c] text-white py-3 md:py-5 rounded-lg font-black text-sm md:text-base uppercase tracking-[0.1em] shadow-xl shadow-neon-red/10 hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100"
             >
               {isSuccess ? 'Processing...' : 'Change Password'}
             </button>
@@ -155,10 +155,10 @@ const EditProfile: React.FC<EditProfileProps> = ({ onBack }) => {
       </GlassCard>
 
       {/* Security Tip */}
-      <div className="flex items-start gap-4 p-6 bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 rounded-2xl opacity-60">
+      <div className="flex items-start gap-4 p-5 md:p-6 bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 rounded-2xl opacity-60">
         {/* Fixed: Replaced non-existent ShieldLock icon with Shield */}
         <Shield className="text-[#ff3131] flex-shrink-0" size={20} />
-        <p className="text-[11px] font-medium text-slate-500 dark:text-white/40 leading-relaxed uppercase tracking-wider">
+        <p className="text-[10px] md:text-[11px] font-medium text-slate-500 dark:text-white/40 leading-relaxed uppercase tracking-wider">
           Passwords should be at least 8 characters long and include a mix of letters, numbers, and special symbols for maximum protocol security.
         </p>
       </div>

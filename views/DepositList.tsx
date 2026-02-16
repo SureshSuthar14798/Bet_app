@@ -25,7 +25,7 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const MDiv = motion.div as any;
 
   return (
-    <div className="max-w-6xl mx-auto py-6 space-y-8 w-full">
+    <div className="max-w-6xl mx-auto lg:py-6 space-y-4 lg:space-y-8 w-full">
       {/* Header */}
       <div className="flex items-center gap-4">
         <button 
@@ -41,13 +41,13 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       </div>
 
       {/* Custom Filter Bar - Matches User Image exactly with Grey Background and Red Borders */}
-      <div className="flex justify-center md:justify-start">
-        <div className="inline-flex bg-slate-100 dark:bg-white/5 p-1 rounded-xl gap-1">
+      <div className="w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+        <div className="flex md:inline-flex bg-slate-100 dark:bg-white/5 p-1 rounded-xl gap-1 min-w-max md:min-w-0">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all
+              className={`flex-1 md:flex-none px-4 md:px-6 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all whitespace-nowrap
                 ${activeFilter === filter 
                   ? 'bg-white dark:bg-[#1a1a25] text-neon-red shadow-sm border border-slate-200 dark:border-white/10' 
                   : 'text-slate-400 dark:text-white/40 hover:text-slate-700 dark:hover:text-white'}
@@ -60,26 +60,26 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       </div>
 
       {/* Table Section */}
-      <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
+      <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-md lg:rounded-3xl overflow-hidden shadow-xl">
+        <div className="overflow-x-auto scrollbar-hide">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50 dark:bg-white/[0.02] border-b border-slate-100 dark:border-white/5">
-                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Record ID</th>
-                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Timeline</th>
-                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Methodology</th>
-                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Quantum</th>
-                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 text-right">Verification</th>
+                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 whitespace-nowrap">Record ID</th>
+                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 whitespace-nowrap">Timeline</th>
+                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 whitespace-nowrap">Methodology</th>
+                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 whitespace-nowrap">Quantum</th>
+                <th className="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 text-right whitespace-nowrap">Verification</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-white/5">
               {filteredData.map((item, i) => (
                 <tr key={item.id} className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors group">
-                  <td className="px-6 py-5 text-[11px] font-black text-slate-900 dark:text-white tracking-tight">{item.id}</td>
-                  <td className="px-6 py-5 text-[10px] font-bold text-slate-500 dark:text-white/40">{item.date}</td>
-                  <td className="px-6 py-5 text-[11px] font-black text-slate-700 dark:text-white/80 italic">{item.method}</td>
-                  <td className="px-6 py-5 text-[12px] font-black text-slate-900 dark:text-white tabular-nums">${item.amount.toFixed(2)}</td>
-                  <td className="px-6 py-5 text-right">
+                  <td className="px-3 py-2 text-[11px] font-black text-slate-900 dark:text-white tracking-tight whitespace-nowrap">{item.id}</td>
+                  <td className="px-3 py-2 text-[10px] font-bold text-slate-500 dark:text-white/40 whitespace-nowrap">{item.date}</td>
+                  <td className="px-3 py-2 text-[11px] font-black text-slate-700 dark:text-white/80 italic whitespace-nowrap">{item.method}</td>
+                  <td className="px-3 py-2 text-[12px] font-black text-slate-900 dark:text-white tabular-nums whitespace-nowrap">${item.amount.toFixed(2)}</td>
+                  <td className="px-3 py-2 text-right whitespace-nowrap">
                     <span className={`text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-full border
                       ${item.status === 'Successful' ? 'bg-neon-lime/10 text-emerald-600 dark:text-neon-lime border-emerald-200 dark:border-neon-lime/20' : 
                         item.status === 'Pending' ? 'bg-[#ff3131]/10 text-[#ff3131] border-[#ff3131]/20' : 

@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Match, BetSelection } from '../types';
 import MatchCard from '../components/MatchCard';
 import AnimatedCounter from '../components/AnimatedCounter';
 import FilterPanel from '../components/FilterPanel';
 import { MOCK_MATCHES } from '../lib/mockData';
-import { Flame, TrendingUp, DollarSign, ListFilter, Zap } from 'lucide-react';
+import { Flame, TrendingUp, DollarSign, ListFilter, Zap, ChevronDown } from 'lucide-react';
 
 interface DashboardProps {
   onBetSelect: (match: Match, selection: 'home' | 'draw' | 'away', odds: number) => void;
@@ -16,6 +16,7 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selectedSelections }) => {
   const [activeFilter, setActiveFilter] = useState('ALL');
+  const [showFilters, setShowFilters] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
@@ -48,20 +49,67 @@ const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selec
   return (
     <div className="flex flex-col lg:flex-row gap-4 items-start">
       {/* Sidebar Filter - Left Side Sticky */}
-      <div className="w-full lg:w-56 flex-shrink-0 flex flex-col gap-4 sticky top-4">
-        <FilterPanel activeFilter={activeFilter} onFilterChange={setActiveFilter} />
-        <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-xl p-4 space-y-3 shadow-sm">
-           <h3 className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest border-b border-slate-100 dark:border-white/5 pb-2 italic">Top Performance</h3>
-           {[
-             { name: 'UEFA CL', change: '+12.4%' },
-             { name: 'NBA FINALS', change: '+8.2%' },
-             { name: 'PREMIER LG', change: '+15.1%' }
-           ].map(item => (
-             <div key={item.name} className="flex items-center justify-between">
-                <span className="text-[11px] font-black text-slate-900 dark:text-white">{item.name}</span>
-                <span className="text-[10px] font-black text-neon-red">{item.change}</span>
-             </div>
-           ))}
+      <div className="w-full lg:w-56 flex-shrink-0 flex flex-col gap-2 lg:gap-4 sticky top-0 z-[100]">
+        
+        {/* Mobile Filter Toggle */}
+        <button 
+          onClick={() => setShowFilters(!showFilters)}
+          className="lg:hidden flex items-center justify-between w-full bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 p-3 rounded-xl shadow-sm"
+        >
+          <div className="flex items-center gap-2">
+            <ListFilter size={16} className="text-neon-red" />
+            <span className="text-xs font-black uppercase tracking-widest text-slate-900 dark:text-white">Filter Intel</span>
+          </div>
+          <motion.div animate={{ rotate: showFilters ? 180 : 0 }}>
+             <ChevronDown size={16} className="text-slate-400" />
+          </motion.div>
+        </button>
+
+        {/* Mobile Filter Content */}
+        <div className="lg:hidden">
+            <AnimatePresence>
+            {showFilters && (
+                <motion.div 
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="space-y-4 overflow-hidden pt-2"
+                >
+                <FilterPanel activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+                <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-xl p-4 space-y-3 shadow-sm">
+                    <h3 className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest border-b border-slate-100 dark:border-white/5 pb-2 italic">Top Performance</h3>
+                    {[
+                    { name: 'UEFA CL', change: '+12.4%' },
+                    { name: 'NBA FINALS', change: '+8.2%' },
+                    { name: 'PREMIER LG', change: '+15.1%' }
+                    ].map(item => (
+                    <div key={item.name} className="flex items-center justify-between">
+                        <span className="text-[11px] font-black text-slate-900 dark:text-white">{item.name}</span>
+                        <span className="text-[10px] font-black text-neon-red">{item.change}</span>
+                    </div>
+                    ))}
+                </div>
+                </motion.div>
+            )}
+            </AnimatePresence>
+        </div>
+
+        {/* Desktop Filter Content (Always Visible) */}
+        <div className="hidden lg:block space-y-4">
+            <FilterPanel activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+            <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-xl p-4 space-y-3 shadow-sm">
+                <h3 className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest border-b border-slate-100 dark:border-white/5 pb-2 italic">Top Performance</h3>
+                {[
+                { name: 'UEFA CL', change: '+12.4%' },
+                { name: 'NBA FINALS', change: '+8.2%' },
+                { name: 'PREMIER LG', change: '+15.1%' }
+                ].map(item => (
+                <div key={item.name} className="flex items-center justify-between">
+                    <span className="text-[11px] font-black text-slate-900 dark:text-white">{item.name}</span>
+                    <span className="text-[10px] font-black text-neon-red">{item.change}</span>
+                </div>
+                ))}
+            </div>
         </div>
       </div>
 
@@ -147,25 +195,25 @@ const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selec
               transition={{ delay: 0.5 }}
               className="flex items-center gap-3 pt-2"
             >
-              <button className="bg-[#a11c1c] text-white px-6 lg:px-8 py-2.5 rounded-lg font-black text-[10px] lg:text-xs uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-neon-red/20 flex items-center gap-2 group">
+              <button className="bg-[#a11c1c] text-white px-3 whitespace-nowrap lg:px-8 py-2.5 rounded-lg font-black text-[10px] lg:text-xs uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-xl shadow-neon-red/20 flex items-center gap-2 group">
                 Deploy Stake
                 <Zap size={12} className="group-hover:fill-white transition-all" />
               </button>
-              <button className="bg-white/10 backdrop-blur-md border border-white/10 text-white/60 px-6 py-2.5 rounded-lg font-black text-[10px] lg:text-xs uppercase tracking-[0.2em] transition-all hover:bg-white/20 hover:text-white">
+              <button className="bg-white/10 backdrop-blur-md whitespace-nowrap border border-white/10 text-white/60 px-3 py-2.5 rounded-lg font-black text-[10px] lg:text-xs uppercase tracking-[0.2em] transition-all hover:bg-white/20 hover:text-white">
                 Market Intel
               </button>
             </MDiv>
           </div>
 
           {/* Side Graphic Elements */}
-          <div className="absolute right-6 lg:right-12 bottom-8 lg:top-1/2 lg:-translate-y-1/2 flex flex-row lg:flex-col gap-4 z-20">
+          <div className="absolute right-5 lg:right-12 top-7 lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-2 lg:gap-4 z-20">
              <div className="flex flex-col items-end bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5">
                <span className="text-[7px] lg:text-[8px] font-black text-white/30 uppercase tracking-[0.3em] mb-1 italic">Volatility</span>
-               <span className="text-lg lg:text-xl font-black italic text-neon-red tracking-tighter leading-none">HIGH</span>
+               <span className="text-base lg:text-xl font-black italic text-neon-red tracking-tighter leading-none">HIGH</span>
              </div>
              <div className="flex flex-col items-end bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5">
                <span className="text-[7px] lg:text-[8px] font-black text-white/30 uppercase tracking-[0.3em] mb-1 italic">Delay</span>
-               <span className="text-lg lg:text-xl font-black italic text-white tracking-tighter leading-none tabular-nums">0.00ms</span>
+               <span className="text-base lg:text-xl font-black italic text-white tracking-tighter leading-none tabular-nums">0.00ms</span>
              </div>
           </div>
         </MDiv>
@@ -214,7 +262,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selec
                 <button 
                   key={filter} 
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-3 py-2 rounded-lg text-[8px] lg:text-[10px] font-black uppercase tracking-widest transition-all
+                  className={`px-1.5 lg:px-3 py-1.5 lg:py-2 rounded-lg text-[8px] lg:text-[10px] font-black uppercase tracking-widest transition-all
                     ${isActive 
                       ? 'bg-[#ff3131] text-white shadow-lg shadow-neon-red/20 scale-105' 
                       : 'text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'}

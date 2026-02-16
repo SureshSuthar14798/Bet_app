@@ -29,7 +29,7 @@ const WithdrawPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto py-6 space-y-6 w-full">
+    <div className="max-w-6xl mx-auto lg:py-6 space-y-6 w-full">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">Withdraw</h1>
         <button className="flex items-center gap-2 bg-neon-red/10 border border-neon-red px-4 py-1.5 rounded-full text-neon-red hover:bg-neon-red hover:text-white transition-all group">

@@ -37,7 +37,7 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
   const MDiv = motion.div as any;
 
   return (
-    <div className="max-w-6xl mx-auto py-6 space-y-8 w-full">
+    <div className="max-w-6xl mx-auto lg:py-6 space-y-8 w-full">
       <div className="flex items-center gap-3">
          <div className="p-3 rounded-2xl bg-neon-red/10 border border-neon-red/20 text-neon-red">
            <History size={24} />
@@ -89,7 +89,7 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
               </div>
 
               {/* Table Header */}
-              <div className="px-6 py-5 overflow-x-auto">
+              <div className="px-6 py-5 overflow-x-auto scrollbar-hide">
                 <div className="min-w-[500px]">
                   <div className="grid grid-cols-5 gap-4 text-center border-b border-slate-100 dark:border-white/5 pb-3 mb-4">
                     <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">select</span>

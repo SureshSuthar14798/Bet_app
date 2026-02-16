@@ -115,7 +115,7 @@ export default function LoginPage() {
   const MDiv = motion.div as any;
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-6 relative overflow-hidden font-sans selection:bg-neon-red selection:text-white">
+    <div className="h-[100dvh] w-full bg-black flex items-center justify-center p-6 relative overflow-hidden font-sans selection:bg-neon-red selection:text-white">
       
       {/* --- INTERACTIVE BACKGROUND LAYER --- */}
       <MDiv 
@@ -156,17 +156,17 @@ export default function LoginPage() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full max-w-lg relative z-10 p-8 md:p-0"
+          className="w-full max-w-lg relative z-10 p-4 sm:p-8 md:p-0"
         >
-          <div className="mb-12">
+          <div className="mb-8 md:mb-12">
             <motion.h1 
               initial={{ x: -20 }}
               animate={{ x: 0 }}
-              className="text-5xl font-black italic tracking-tighter text-white uppercase mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-black italic tracking-tighter text-white uppercase mb-2 md:mb-4 leading-none"
             >
               {mode === 'register' ? 'REGISTRATION' : 'AUTHENTICATION'}
             </motion.h1>
-            <p className="text-white/60 text-sm font-bold uppercase tracking-widest leading-relaxed">
+            <p className="text-white/60 text-xs sm:text-sm font-bold uppercase tracking-widest leading-relaxed">
               {mode === 'register' 
                 ? 'Join the elite ranks. Establish your identity.' 
                 : 'Enter your credentials to access the Nexus.'}
@@ -267,7 +267,7 @@ export default function LoginPage() {
                   </div>
 
                   {/* Terms and Conditions */}
-                  <div className="flex gap-4 items-start pt-4">
+                  <div className="flex gap-4 items-start pt-0 lg:pt-4">
                     <div className="relative flex-shrink-0 h-5">
                       <input 
                         type="checkbox" 
@@ -298,9 +298,9 @@ export default function LoginPage() {
             <div className="pt-0 !mt-4">
               <button 
                 type="submit"
-                className="w-full bg-[#a11c1c] text-white font-black text-base uppercase tracking-[0.3em] py-5 px-8 rounded flex items-center justify-between hover:brightness-110 active:scale-[0.98] transition-all group shadow-[0_20px_40px_rgba(161,28,28,0.3)]"
+                className="w-full bg-[#a11c1c] text-white font-black text-base uppercase tracking-[0.3em] lg:py-5 py-3 px-8 rounded flex items-center justify-between hover:brightness-110 active:scale-[0.98] transition-all group shadow-[0_20px_40px_rgba(161,28,28,0.3)]"
               >
-                <span>{mode === 'register' ? 'VALIDATE' : 'ESTABLISH LINK'}</span>
+                <span>{mode === 'register' ? 'VALIDATE' : 'LOGIN HERE'}</span>
                 <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-white transition-colors">
                   <CheckCircle2 size={20} fill="white" className="text-[#a11c1c]" />
                 </div>

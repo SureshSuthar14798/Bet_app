@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="h-14 w-full glass sticky top-0 z-50 border-b border-slate-200 dark:border-white/5 backdrop-blur-xl bg-white/80 dark:bg-black/80 transition-all duration-300">
-      <div className="max-w-[1400px] mx-auto h-full flex items-center px-4 gap-6">
+      <div className="max-w-[1400px] mx-auto h-full flex items-center px-2 sm:px-4 gap-2 sm:gap-6">
         {/* Brand with Animated Logo */}
         <Link 
           href="/home"
@@ -68,14 +68,14 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Navigation */}
-        <nav className="flex items-center h-full flex-1 gap-1">
+        <nav className="ms-4 flex items-center h-full flex-1 gap-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.id}
                 href={item.href}
-                className={`h-full px-4 flex items-center gap-2 transition-all relative text-[11px] font-black uppercase tracking-wider
+                className={`h-full px-2 sm:px-4 flex items-center gap-2 transition-all relative text-[11px] font-black uppercase tracking-wider
                   ${isActive 
                     ? 'text-neon-red' 
                     : 'text-slate-400 dark:text-white/30 hover:text-slate-900 dark:hover:text-white'}
@@ -91,7 +91,7 @@ const Navbar: React.FC = () => {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-3">
           {/* Quick Deposit Link */}
           <Link 
             href="/wallet"
@@ -102,8 +102,8 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* User Balance */}
-          <div className="flex items-center gap-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-full transition-colors">
-            <span className="text-[10px] font-black text-slate-400 dark:text-white/20 uppercase">USDT</span>
+          <div className="flex items-center gap-2 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-2 sm:px-3 py-1.5 rounded-full transition-colors">
+            <span className="hidden sm:inline text-[10px] font-black text-slate-400 dark:text-white/20 uppercase">USDT</span>
             <span className="text-xs font-black text-neon-red tracking-tight tabular-nums">
               $<AnimatedCounter value={user.balance} decimals={2} />
             </span>
@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute right-0 mt-4 w-80 bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[60] flex flex-col"
+                  className="absolute -right-15 lg:right-0 mt-4 w-80 bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[60] flex flex-col"
                 >
                   <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
                     <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Notifications</span>
