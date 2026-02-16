@@ -2,17 +2,30 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Eye, EyeOff, CheckCircle2 } from 'lucide-react';
+import { Eye, EyeOff, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useBetting } from '@/components/providers/BettingProvider';
 import { useRouter } from 'next/navigation';
+
+// --- CONFIGURATION ---
+// In a real app, use environment variables or a backend validation
+const VALID_CREDENTIALS = {
+  email: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
+  password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+};
 
 export default function LoginPage() {
   const { login, isAuth } = useBetting();
   const router = useRouter();
   const [mode, setMode] = useState<'login' | 'register'>('login');
+  
+  // State for inputs
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
+  const [error, setError] = useState('');
+
   // Mouse Tracking for Animation
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -48,13 +61,41 @@ export default function LoginPage() {
     };
   }, [mouseX, mouseY]);
 
+  useEffect(() => {
+    // Clear error when switching modes or typing
+    setError('');
+  }, [mode, email, password, confirmPassword]);
+
   const toggleMode = () => {
     setMode(prev => prev === 'login' ? 'register' : 'login');
   };
 
   const handleLogin = () => {
-    login();
-    router.push('/home');
+    // Basic validation
+    if (!email || !password) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    if (mode === 'register') {
+      if (password !== confirmPassword) {
+        setError('Passwords do not match');
+        return;
+      }
+      // For this specific request, we might want to disable registration or make it just redirect
+      // But let's assume we proceed to login similar to the regular flow for now
+      // Or block it since user wants "only that account"
+      setError('Registration is currently closed. Please login with authorized credentials.');
+      return;
+    }
+
+    // AUTHENTICATION CHECK
+    if (email === VALID_CREDENTIALS.email && password === VALID_CREDENTIALS.password) {
+      login();
+      router.push('/home');
+    } else {
+      setError('Invalid credentials. Access denied.');
+    }
   };
 
   const inputClasses = "w-full bg-transparent border-b border-white/20 py-3 text-white focus:outline-none focus:border-neon-red transition-colors placeholder:text-transparent font-medium";
@@ -126,11 +167,33 @@ export default function LoginPage() {
             onSubmit={(e) => { e.preventDefault(); handleLogin(); }}
             className="space-y-10"
           >
+            {/* Error Message */}
+            <AnimatePresence>
+              {error && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="bg-red-500/10 border border-red-500/50 rounded p-3 flex items-start gap-3 text-red-200"
+                >
+                  <AlertCircle size={18} className="mt-0.5 flex-shrink-0" />
+                  <span className="text-sm font-medium">{error}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div className="space-y-8">
               {/* E-MAIL */}
               <div className="relative group">
                 <label className={labelClasses}>E-MAIL</label>
-                <input type="email" required className={inputClasses} placeholder="email" />
+                <input 
+                  type="email" 
+                  required 
+                  className={inputClasses} 
+                  placeholder="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <div className="absolute bottom-0 left-0 h-px bg-neon-red w-0 group-focus-within:w-full transition-all duration-500" />
               </div>
 
@@ -143,6 +206,8 @@ export default function LoginPage() {
                     required 
                     className={inputClasses} 
                     placeholder="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <button 
                     type="button"
@@ -170,6 +235,8 @@ export default function LoginPage() {
                         required 
                         className={inputClasses} 
                         placeholder="confirm password" 
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                       />
                       <button 
                         type="button"
