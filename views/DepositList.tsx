@@ -1,0 +1,111 @@
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, ArrowDownCircle, Search } from 'lucide-react';
+import GlassCard from '../components/GlassCard';
+
+const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+  const [activeFilter, setActiveFilter] = useState('Total');
+
+  const filters = ['Total', 'Pending', 'Successful', 'Canceled'];
+
+  const mockData = [
+    { id: 'DP-9021', date: '2024-05-14 08:30', method: 'USDT (TRC20)', amount: 500.00, status: 'Successful' },
+    { id: 'DP-8172', date: '2024-05-13 14:15', method: 'Bank Transfer', amount: 1200.00, status: 'Successful' },
+    { id: 'DP-7210', date: '2024-05-12 11:20', method: 'Visa / MC', amount: 50.00, status: 'Pending' },
+    { id: 'DP-6543', date: '2024-05-11 09:05', method: 'Skrill', amount: 100.00, status: 'Canceled' },
+    { id: 'DP-5122', date: '2024-05-10 22:45', method: 'USDT (TRC20)', amount: 250.00, status: 'Successful' },
+  ];
+
+  const filteredData = activeFilter === 'Total' 
+    ? mockData 
+    : mockData.filter(item => item.status === activeFilter);
+
+  // Use locally casted components to resolve environment-specific TS errors where motion props are not recognized
+  const MDiv = motion.div as any;
+
+  return (
+    <div className="max-w-6xl mx-auto py-6 space-y-8 w-full">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <button 
+          onClick={onBack}
+          className="p-2.5 rounded-xl bg-white dark:bg-white/5 text-slate-900 dark:text-white hover:bg-[#a11c1c] hover:text-white transition-all shadow-sm border border-slate-200 dark:border-transparent group"
+        >
+          <ArrowLeft size={18} />
+        </button>
+        <div>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">Deposit List</h1>
+          <p className="text-[10px] text-slate-500 dark:text-white/30 font-bold uppercase tracking-widest italic">Historical ingestion records</p>
+        </div>
+      </div>
+
+      {/* Custom Filter Bar - Matches User Image exactly with Grey Background and Red Borders */}
+      <div className="flex justify-center md:justify-start">
+        <div className="inline-flex bg-slate-100 dark:bg-white/5 p-1 rounded-xl gap-1">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-6 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all
+                ${activeFilter === filter 
+                  ? 'bg-white dark:bg-[#1a1a25] text-neon-red shadow-sm border border-slate-200 dark:border-white/10' 
+                  : 'text-slate-400 dark:text-white/40 hover:text-slate-700 dark:hover:text-white'}
+              `}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Table Section */}
+      <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-3xl overflow-hidden shadow-xl">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-slate-50 dark:bg-white/[0.02] border-b border-slate-100 dark:border-white/5">
+                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Record ID</th>
+                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Timeline</th>
+                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Methodology</th>
+                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">Quantum</th>
+                <th className="px-6 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20 text-right">Verification</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-50 dark:divide-white/5">
+              {filteredData.map((item, i) => (
+                <tr key={item.id} className="hover:bg-slate-50/80 dark:hover:bg-white/[0.02] transition-colors group">
+                  <td className="px-6 py-5 text-[11px] font-black text-slate-900 dark:text-white tracking-tight">{item.id}</td>
+                  <td className="px-6 py-5 text-[10px] font-bold text-slate-500 dark:text-white/40">{item.date}</td>
+                  <td className="px-6 py-5 text-[11px] font-black text-slate-700 dark:text-white/80 italic">{item.method}</td>
+                  <td className="px-6 py-5 text-[12px] font-black text-slate-900 dark:text-white tabular-nums">${item.amount.toFixed(2)}</td>
+                  <td className="px-6 py-5 text-right">
+                    <span className={`text-[9px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-full border
+                      ${item.status === 'Successful' ? 'bg-neon-lime/10 text-emerald-600 dark:text-neon-lime border-emerald-200 dark:border-neon-lime/20' : 
+                        item.status === 'Pending' ? 'bg-[#ff3131]/10 text-[#ff3131] border-[#ff3131]/20' : 
+                        'bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-white/20 border-slate-200 dark:border-white/5'}
+                    `}>
+                      {item.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+              {filteredData.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="px-6 py-24 text-center">
+                    <div className="flex flex-col items-center gap-3 opacity-30">
+                       <Search size={40} className="text-slate-400 dark:text-white" />
+                       <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 dark:text-white italic">No records synchronized for this partition</p>
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DepositList;
