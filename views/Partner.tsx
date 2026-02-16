@@ -48,7 +48,7 @@ const PartnerPage: React.FC<PartnerPageProps> = ({ onNavigate, onBack }) => {
 
   return (
     <MDiv 
-      className="max-w-6xl mx-auto py-6 space-y-8 w-full"
+      className="max-w-6xl mx-auto py-6 space-y-3 w-full"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
