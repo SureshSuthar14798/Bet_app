@@ -73,7 +73,7 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
                       🛡️
                     </div>
                   </div>
-                  <div className="px-2 py-0.5 rounded-full bg-white/20 text-black dark:text-white text-[9px] font-black uppercase tracking-widest">
+                  <div className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-500 dark:text-white text-[9px] font-black uppercase tracking-widest">
                      Market Open
                   </div>
                 </div>

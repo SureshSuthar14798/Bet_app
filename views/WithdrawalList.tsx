@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowUpCircle, Search } from 'lucide-react';
+import { ArrowUpCircle, Search } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+import PageHeader from '../components/PageHeader';
 
 const WithdrawalList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [activeFilter, setActiveFilter] = useState('Total');
@@ -26,18 +27,11 @@ const WithdrawalList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div className="max-w-6xl mx-auto lg:py-6 space-y-4 lg:space-y-8 w-full">
       {/* Header */}
-      <div className="flex items-center gap-4">
-        <button 
-          onClick={onBack}
-          className="p-2.5 rounded-xl bg-white dark:bg-white/5 text-slate-900 dark:text-white hover:bg-[#a11c1c] hover:text-white transition-all shadow-sm border border-slate-200 dark:border-transparent group"
-        >
-          <ArrowLeft size={18} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">Withdrawal List</h1>
-          <p className="text-[10px] text-slate-500 dark:text-white/30 font-bold uppercase tracking-widest italic">Historical extraction records</p>
-        </div>
-      </div>
+      <PageHeader 
+        title="Withdrawal List"
+        subtitle="Historical extraction records"
+        onBack={onBack}
+      />
 
       {/* Custom Filter Bar - Matches User Image exactly with Grey Background and Red Borders */}
       <div className="w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
