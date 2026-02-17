@@ -104,7 +104,7 @@ const SupportPage: React.FC = () => {
                 />
               </div>
 
-              <div className="flex flex-row items-center justify-center gap-3 md:gap-4 md:pt-6">
+              <div className="flex flex-row items-center justify-center gap-3 lg:gap-4">
                 <button 
                   type="submit"
                   className="w-full md:flex-1 md:max-w-[220px] bg-[#a11c1c] text-white font-black text-xs md:text-sm uppercase tracking-widest py-3 md:py-4 px-6 md:px-8 rounded-full flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-neon-red/20"

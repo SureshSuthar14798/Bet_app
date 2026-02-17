@@ -5,6 +5,7 @@ import GlassCard from '../components/GlassCard';
 import { ChevronDown, Info, List } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
 import { useRouter } from 'next/navigation';
+import PageHeader from '../components/PageHeader';
 
 const WithdrawPage: React.FC = () => {
   const router = useRouter();
@@ -31,12 +32,15 @@ const WithdrawPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto lg:py-6 space-y-6 w-full">
+    <div className="max-w-3xl mx-auto py-8 px-4 space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">Withdraw</h1>
-        <button 
+        <PageHeader
+          title="Withdraw"
+          onBack={() => router.back()}
+        />
+        <button
           onClick={() => router.push('/withdrawal-list')}
-          className="flex items-center gap-2 bg-neon-red/10 border border-neon-red px-4 py-1.5 rounded-full text-neon-red hover:bg-neon-red hover:text-white transition-all group"
+          className="flex items-center gap-2 bg-[#a11c1c]/10 border border-[#a11c1c] px-4 py-1.5 rounded-full text-[#a11c1c] hover:bg-[#a11c1c] hover:text-white transition-all group"
         >
           <List size={14} />
           <span className="text-[10px] font-black uppercase tracking-widest">Withdraw List</span>
@@ -53,19 +57,19 @@ const WithdrawPage: React.FC = () => {
             1
           </div>
           <h3 className="text-sm font-black text-slate-800 dark:text-white tracking-wide uppercase italic">Select the currency you want to withdraw</h3>
-          
+
           <div className="space-y-6 max-w-xl">
-            <CustomSelect 
-              options={currencyOptions} 
-              value={currency} 
-              onChange={setCurrency} 
+            <CustomSelect
+              options={currencyOptions}
+              value={currency}
+              onChange={setCurrency}
             />
 
-            <CustomSelect 
+            <CustomSelect
               label="Withdrawal Method"
-              options={methodOptions} 
-              value={method} 
-              onChange={setMethod} 
+              options={methodOptions}
+              value={method}
+              onChange={setMethod}
             />
           </div>
         </div>
@@ -85,8 +89,8 @@ const WithdrawPage: React.FC = () => {
                 <span className="text-[10px] font-bold text-slate-300 dark:text-white/20 uppercase tracking-widest">First-time Registration Only</span>
               </div>
               <div className="relative group">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   defaultValue="TTNYzj88EyX1EyQhaebExo8sYDzDtShm34"
                   className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl py-3.5 px-5 text-[13px] font-black text-slate-900 dark:text-white focus:outline-none focus:border-neon-red/30 focus:bg-slate-50 dark:focus:bg-white/5 transition-all"
                 />
@@ -94,7 +98,7 @@ const WithdrawPage: React.FC = () => {
             </div>
 
             {/* Network Selection */}
-            <CustomSelect 
+            <CustomSelect
               label="Network"
               options={networkOptions}
               value={network}
@@ -103,8 +107,8 @@ const WithdrawPage: React.FC = () => {
 
             {/* Amount Input */}
             <div className="relative">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder="Enter amount"
                 className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl py-3.5 px-5 pr-24 text-sm font-black text-slate-900 dark:text-white focus:outline-none focus:border-neon-red/30 focus:bg-slate-50 dark:focus:bg-white/5 transition-all"
               />
@@ -133,7 +137,7 @@ const WithdrawPage: React.FC = () => {
 
             {/* Agreement Checkbox */}
             <div className="flex gap-3 items-start pt-4">
-              <button 
+              <button
                 onClick={() => setAgreed(!agreed)}
                 className={`mt-1 flex-shrink-0 w-4 h-4 rounded border transition-all flex items-center justify-center
                   ${agreed ? 'bg-neon-red border-neon-red' : 'border-slate-300 dark:border-white/20 hover:border-slate-400 dark:hover:border-white/40'}

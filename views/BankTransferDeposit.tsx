@@ -1,14 +1,17 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, List, ChevronDown } from 'lucide-react';
+import { List, ChevronDown } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
+import PageHeader from '../components/PageHeader';
+import { useRouter } from 'next/navigation';
 
 interface BankTransferDepositProps {
   onBack: () => void;
 }
 
 const BankTransferDeposit: React.FC<BankTransferDepositProps> = ({ onBack }) => {
+  const router = useRouter();
   const [amount, setAmount] = useState('');
   const [currency, setCurrency] = useState('USD');
   const [bankName, setBankName] = useState('');
@@ -40,17 +43,12 @@ const BankTransferDeposit: React.FC<BankTransferDepositProps> = ({ onBack }) => 
     <div className="max-w-3xl mx-auto py-8 px-4 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <button 
-            onClick={onBack}
-            className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-[#a11c1c] hover:text-white transition-all shadow-sm group"
-          >
-            <ArrowLeft size={18} />
-          </button>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tighter uppercase">Bank Transfer Deposit</h1>
-        </div>
+        <PageHeader 
+          title="Bank Transfer Deposit" 
+          onBack={onBack} 
+        />
         <button 
-          onClick={() => window.location.hash = '#/deposit-list'}
+          onClick={() => router.push('/deposit-list')}
           className="flex items-center gap-2 bg-[#a11c1c]/10 border border-[#a11c1c] px-4 py-1.5 rounded-full text-[#a11c1c] hover:bg-[#a11c1c] hover:text-white transition-all group"
         >
           <List size={14} />
