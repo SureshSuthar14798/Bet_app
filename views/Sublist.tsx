@@ -65,7 +65,7 @@ const SublistPage: React.FC<SublistPageProps> = ({ onBack }) => {
       <div className="space-y-4 lg:space-y-8">
         {/* Stats Section with Glass Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <GlassCard animate={false} className="p-4 lg:p-6 border border-slate-200 dark:border-white/10 flex items-center justify-between bg-white dark:bg-black/40">
+          <GlassCard animate={false} className="p-4 lg:p-5 border border-slate-200 dark:border-white/10 flex items-center justify-between bg-white dark:bg-black/40">
             <div className="flex items-center gap-4">
                <div className="w-12 h-12 rounded-full bg-neon-red/10 flex items-center justify-center text-neon-red">
                  <Wallet size={24} />
@@ -131,7 +131,7 @@ const SublistPage: React.FC<SublistPageProps> = ({ onBack }) => {
                      
                      <div className="flex items-center gap-4 relative">
                        {/* Horizontal connector */}
-                       <div className="absolute left-[3px] top-12 md:top-10 w-4 h-[2px] bg-slate-200 dark:bg-white/5 md:left-[19px] md:w-6"></div>
+                       <div className="absolute left-[3px] top-12 md:top-9 w-4 h-[2px] bg-slate-200 dark:bg-white/5 md:left-[19px] md:w-6"></div>
                        
                        {/* User Card */}
                        <div 
@@ -177,10 +177,10 @@ const SublistPage: React.FC<SublistPageProps> = ({ onBack }) => {
                            className="overflow-hidden ml-6 md:ml-12 pl-4 border-l-2 border-dashed border-slate-200 dark:border-white/5 mt-2 space-y-2 relative"
                          >
                            {/* Add extra connector for the stats block */}
-                           <div className="absolute left-[-2px] top-6 w-4 h-[2px] bg-slate-200 dark:bg-white/5 bg-opacity-50"></div>
+                           <div className="absolute left-[-2px] top-9 w-4 h-[2px] bg-slate-200 dark:bg-white/5 bg-opacity-50"></div>
 
                             {statItems.map((stat, i) => (
-                              <div key={stat.key} className="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 relative">
+                              <div key={stat.key} className="flex items-center justify-between lg:p-3 p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 relative">
                                 <div className="flex items-center gap-3">
                                   <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center text-slate-500 dark:text-white/60">
                                     <stat.icon size={14} className={i === 0 ? "text-neon-red" : ""} />

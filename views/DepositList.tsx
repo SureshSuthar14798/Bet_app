@@ -26,7 +26,7 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const MDiv = motion.div as any;
 
   return (
-    <div className="max-w-6xl mx-auto lg:py-6 space-y-4 lg:space-y-8 w-full">
+    <div className="max-w-6xl mx-auto lg:py-6 w-full">
       {/* Header */}
       <PageHeader 
         title="Deposit List"
@@ -35,8 +35,8 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       />
 
       {/* Custom Filter Bar - Matches User Image exactly with Grey Background and Red Borders */}
-      <div className="w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-        <div className="flex md:inline-flex bg-slate-100 dark:bg-white/5 p-1 rounded-xl gap-1 min-w-max md:min-w-0">
+      <div className="w-full overflow-x-auto pb-2 mt-4 lg:mt-6 mb-3 md:pb-0 scrollbar-hide">
+        <div className="flex md:inline-flex bg-slate-200 dark:bg-white/5 p-1 rounded-xl gap-1 min-w-max md:min-w-0">
           {filters.map((filter) => (
             <button
               key={filter}
@@ -54,7 +54,7 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       </div>
 
       {/* Table Section */}
-      <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-md lg:rounded-3xl overflow-hidden shadow-xl">
+      <div className="bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/5 rounded-md lg:rounded-xl overflow-hidden shadow-xl">
         <div className="overflow-x-auto scrollbar-hide">
           <table className="w-full text-left border-collapse">
             <thead>

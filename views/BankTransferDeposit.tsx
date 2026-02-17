@@ -37,10 +37,10 @@ const BankTransferDeposit: React.FC<BankTransferDepositProps> = ({ onBack }) => 
 
   const labelClasses = "text-[14px] font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2 block";
   const subtextClasses = "text-[11px] font-bold text-slate-400 dark:text-white/30 mb-2 block italic uppercase tracking-wider";
-  const inputClasses = "w-full bg-white dark:bg-black border border-slate-300 dark:border-white/20 rounded-md py-3.5 px-4 text-slate-900 dark:text-white font-black focus:outline-none focus:border-neon-red/50 transition-all placeholder:text-slate-400 dark:placeholder:text-white/20";
+  const inputClasses = "w-full bg-white dark:bg-black border border-slate-300 dark:border-white/20 rounded-md py-3 px-3 text-slate-900 dark:text-white font-black focus:outline-none focus:border-neon-red/50 transition-all placeholder:text-slate-400 dark:placeholder:text-white/20";
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 space-y-8">
+    <div className="max-w-3xl mx-auto lg:py-8 lg:px-4 space-y-5 lg:space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between gap-4">
         <PageHeader 
@@ -49,7 +49,7 @@ const BankTransferDeposit: React.FC<BankTransferDepositProps> = ({ onBack }) => 
         />
         <button 
           onClick={() => router.push('/deposit-list')}
-          className="flex items-center gap-2 bg-[#a11c1c]/10 border border-[#a11c1c] px-4 py-1.5 rounded-full text-[#a11c1c] hover:bg-[#a11c1c] hover:text-white transition-all group"
+          className="flex items-center gap-2 bg-[#a11c1c]/10 border border-[#a11c1c] px-2 py-1.5 rounded-full text-[#a11c1c] hover:bg-[#a11c1c] hover:text-white transition-all group"
         >
           <List size={14} />
           <span className="text-[10px] font-black uppercase tracking-widest">Deposit List</span>
@@ -130,7 +130,7 @@ const BankTransferDeposit: React.FC<BankTransferDepositProps> = ({ onBack }) => 
         <button 
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[#a11c1c] text-white py-5 rounded-md font-black text-xl uppercase tracking-tighter shadow-xl shadow-[#a11c1c]/20 hover:brightness-110 active:scale-[0.99] transition-all disabled:opacity-50"
+          className="w-full bg-[#a11c1c] text-white py-4 rounded-md font-black text-xl uppercase tracking-tighter shadow-xl shadow-[#a11c1c]/20 hover:brightness-110 active:scale-[0.99] transition-all disabled:opacity-50"
         >
           {isSubmitting ? "Processing..." : "Submit"}
         </button>

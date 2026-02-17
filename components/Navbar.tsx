@@ -181,7 +181,7 @@ const Navbar: React.FC = () => {
           <div className="relative" ref={dropdownRef}>
             <div 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-2 cursor-pointer select-none pl-2 border-l border-slate-200 dark:border-white/10"
+              className="flex items-center gap-1 cursor-pointer select-none pl-2 border-l border-slate-200 dark:border-white/10"
             >
               <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-slate-200 dark:border-white/10 p-0.5 bg-white dark:bg-black">
                 <img src={user.avatar} className="w-full h-full rounded-full object-cover" />

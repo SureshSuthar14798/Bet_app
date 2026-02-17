@@ -41,7 +41,7 @@ const WalletPage: React.FC = () => {
     {
       id: 'usdt',
       name: 'USDT TRC20',
-      icon: <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white flex items-center justify-center font-black text-sm md:text-xl">₮</div>,
+      icon: <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white flex text-white items-center justify-center font-black text-sm md:text-xl">₮</div>,
       limit: 'US$:50 ~ 100,000',
       isIcon: true
     },
@@ -93,7 +93,7 @@ const WalletPage: React.FC = () => {
                         </div>
                       ) : method.logo}
                     </span>
-                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-tight text-white/80 text-center leading-tight">{method.name}</span>
+                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-tight text-white text-center leading-tight">{method.name}</span>
                   </div>
                 )}
               </div>

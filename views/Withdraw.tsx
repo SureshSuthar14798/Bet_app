@@ -1,8 +1,6 @@
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import GlassCard from '../components/GlassCard';
-import { ChevronDown, Info, List } from 'lucide-react';
+import { Info, List } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
 import { useRouter } from 'next/navigation';
 import PageHeader from '../components/PageHeader';
@@ -32,7 +30,7 @@ const WithdrawPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 space-y-8">
+    <div className="max-w-3xl mx-auto lg:py-8 lg:px-4 space-y-8">
       <div className="flex items-center justify-between">
         <PageHeader
           title="Withdraw"
@@ -40,7 +38,7 @@ const WithdrawPage: React.FC = () => {
         />
         <button
           onClick={() => router.push('/withdrawal-list')}
-          className="flex items-center gap-2 bg-[#a11c1c]/10 border border-[#a11c1c] px-4 py-1.5 rounded-full text-[#a11c1c] hover:bg-[#a11c1c] hover:text-white transition-all group"
+          className="flex items-center gap-2 bg-[#a11c1c]/10 border border-[#a11c1c] px-2 py-1.5 rounded-full text-[#a11c1c] hover:bg-[#a11c1c] hover:text-white transition-all group"
         >
           <List size={14} />
           <span className="text-[10px] font-black uppercase tracking-widest">Withdraw List</span>

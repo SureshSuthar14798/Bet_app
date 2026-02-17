@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { Match, BetSelection } from '../types';
 import GlassCard from '../components/GlassCard';
 import OddsButton from '../components/OddsButton';
-import { ArrowLeft, MapPin, Radio, Activity, BarChart3, Clock, Zap } from 'lucide-react';
+import { MapPin, Radio, Activity, BarChart3, Clock, Zap } from 'lucide-react';
+import PageHeader from '../components/PageHeader';
 
 interface MatchDetailsProps {
   match: Match;
@@ -30,15 +31,10 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
   return (
     <div className="lg:py-6 space-y-8">
       {/* Back Button */}
-      <button 
-        onClick={onBack}
-        className="flex items-center gap-3 text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-all group"
-      >
-        <div className="p-2.5 rounded-xl bg-slate-200 dark:bg-white/5 group-hover:bg-[#a11c1c] group-hover:text-white transition-all shadow-sm">
-          <ArrowLeft size={18} />
-        </div>
-        <span className="text-[10px] font-black uppercase tracking-widest">Back to events</span>
-      </button>
+      <PageHeader 
+        title="Match Details" 
+        onBack={onBack} 
+      />
 
       {/* Hero Header with Animated Background */}
       <MDiv 
@@ -115,9 +111,9 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
                 <span className="text-5xl md:text-9xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110">
                   {match.score?.home || 0}
                 </span>
-                <div className="flex flex-col items-center w-5 lg:w-auto ms-3 gap-2 ">
-                   <div className="w-2 h-2 rounded-full bg-white/20" />
-                   <div className="w-2 h-2 rounded-full bg-white/20" />
+                <div className="flex flex-col items-center w-5 ms-3 lg:ms-7 gap-2 ">
+                   <div className="w-2 h-2 lg:w-4 lg:h-4 rounded-full bg-white/20" />
+                   <div className="w-2 h-2 lg:w-4 lg:h-4 rounded-full bg-white/20" />
                 </div>
                 <span className="text-5xl md:text-9xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110">
                   {match.score?.away || 0}
@@ -201,9 +197,9 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
         <div className="space-y-4 lg:space-y-6">
            <div className="flex items-center gap-3">
               <Activity size={20} className="text-neon-red" />
-              <h3 className="text-xl font-black italic tracking-tight uppercase text-slate-900 dark:text-white">LIVE <span className="text-neon-blue">STATS</span></h3>
+              <h3 className="text-xl font-black italic tracking-tight uppercase text-slate-900 dark:text-white">LIVE <span className="text-neon-red">STATS</span></h3>
            </div>
-           <GlassCard className="p-4 lg:p-8 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f] space-y-10 shadow-xl">
+           <GlassCard className="p-4 lg:p-8 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f] space-y-6 shadow-xl">
               <div className="space-y-3">
                 <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">
                   <span>Possession</span>
@@ -218,7 +214,7 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
                 </div>
               </div>
 
-              <div className="space-y-5">
+              <div className="space-y-2">
                 {[
                   { label: 'Shots on Target', home: 5, away: 3 },
                   { label: 'Corners', home: 7, away: 2 },
@@ -226,9 +222,9 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
                   { label: 'Attacks', home: 124, away: 98 }
                 ].map(stat => (
                   <div key={stat.label} className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-3 transition-colors hover:border-neon-blue/20">
-                    <span className="text-xl font-black italic text-slate-900 dark:text-white">{stat.home}</span>
+                    <span className="text-base font-black italic text-slate-900 dark:text-white">{stat.home}</span>
                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">{stat.label}</span>
-                    <span className="text-xl font-black italic text-slate-900 dark:text-white">{stat.away}</span>
+                    <span className="text-base font-black italic text-slate-900 dark:text-white">{stat.away}</span>
                   </div>
                 ))}
               </div>

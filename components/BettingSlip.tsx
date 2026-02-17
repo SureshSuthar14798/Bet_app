@@ -179,7 +179,7 @@ const BettingSlip: React.FC = () => {
                   />
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-black text-slate-300 dark:text-white/30">$</span>
                 </div>
-                <div className="bg-[#a11c1c] rounded-sm px-3 flex flex-col justify-center items-center min-w-[100px]">
+                <div className="bg-neon-red rounded-sm px-3 flex flex-col justify-center items-center min-w-[100px]">
                   <span className="text-[10px] font-bold text-white/80 uppercase">Profit</span>
                   <span className="text-sm font-black text-white italic">{profitPercentage}</span>
                 </div>
@@ -222,7 +222,7 @@ const BettingSlip: React.FC = () => {
             <div className="flex gap-3 items-start pt-2">
               <button 
                 onClick={() => setAgreed(!agreed)} 
-                className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border transition-all flex items-center justify-center ${agreed ? 'bg-[#a11c1c] border-[#a11c1c]' : 'border-slate-300 dark:border-white/20'}`}
+                className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border transition-all flex items-center justify-center ${agreed ? 'bg-neon-red border-neon-red' : 'border-slate-300 dark:border-white/20'}`}
               >
                 {agreed && <Check size={12} className="text-white" />}
               </button>
@@ -245,7 +245,7 @@ const BettingSlip: React.FC = () => {
             <button 
               onClick={handleBetClick} 
               disabled={isProcessing}
-              className="w-full bg-[#a11c1c] text-white py-2 rounded-lg font-black text-lg uppercase tracking-tighter shadow-sm shadow-[#a11c1c]/20 active:scale-95 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-neon-red text-white py-2 rounded-lg font-black text-lg uppercase tracking-tighter shadow-sm shadow-[#a11c1c]/20 active:scale-95 transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isProcessing ? (
                 <Loader2 className="w-6 h-6 animate-spin" />
