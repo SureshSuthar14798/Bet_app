@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { 
   ShieldCheck, 
   ChevronRight, 
@@ -16,6 +17,7 @@ import {
   ArrowUpCircle
 } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+import PageHeader from '../components/PageHeader';
 
 interface ProfilePageProps {
   onNavigate?: (tab: string) => void;
@@ -45,6 +47,7 @@ const itemVariants = {
 };
 
 const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
+  const router = useRouter();
   // Use locally casted components to resolve environment-specific TS errors where motion props are not recognized
   const MDiv = motion.div as any;
 
@@ -56,7 +59,10 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
       animate="visible"
     >
       <MDiv variants={itemVariants}>
-        <h1 className="text-xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">My information</h1>
+        <PageHeader 
+          title="My information" 
+          onBack={() => router.back()} 
+        />
       </MDiv>
 
       {/* User ID Card */}
@@ -75,7 +81,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ onNavigate }) => {
             <span className="text-sm font-black text-slate-900 dark:text-white tracking-tight">gusdnd8448@gmail.com</span>
           </div>
           <div className="flex items-center gap-1 text-slate-400 dark:text-white/40 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-            <span className="hidden text-[10px] font-bold uppercase tracking-widest">Edit information</span>
+            <span className="hidden lg:block text-[10px] font-bold uppercase tracking-widest">Edit information</span>
             <span className="lg:hidden block text-[10px] font-bold uppercase tracking-widest">Edit</span>
             <ChevronRight size={14} />
           </div>

@@ -3,12 +3,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BetRecord } from '../types';
 import { Trophy, Clock, History, ShoppingCart } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import PageHeader from '../components/PageHeader';
 
 interface MyBetsProps {
   placedBets: BetRecord[];
 }
 
 const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
+  const router = useRouter();
   // Group bets by match title for the UI layout
   const groupedBets = placedBets.reduce((acc, bet) => {
     if (!acc[bet.matchTitle]) {
@@ -38,15 +41,11 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
 
   return (
     <div className="max-w-6xl mx-auto lg:py-6 space-y-8 w-full">
-      <div className="flex items-center gap-3">
-         <div className="p-3 rounded-2xl bg-neon-red/10 border border-neon-red/20 text-neon-red">
-           <History size={24} />
-         </div>
-         <div>
-           <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">My Bets History</h1>
-           <p className="text-[10px] text-slate-400 dark:text-white/30 font-bold uppercase tracking-widest">History of established market positions</p>
-         </div>
-      </div>
+      <PageHeader 
+        title="My Bets History"
+        subtitle="History of established market positions"
+        onBack={() => router.back()}
+      />
 
       <div className="space-y-6">
         {displayGroups.length === 0 ? (
@@ -63,26 +62,26 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
               className="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/5 bg-white dark:bg-[#0a0a0f] shadow-sm"
             >
               {/* Themed Header */}
-              <div className="bg-[#a11c1c] p-4 flex flex-col gap-2">
+              <div className="bg-gray-300 dark:bg-black p-4 flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Trophy size={14} className="text-white/60" />
-                    <h3 className="text-sm font-black text-white italic tracking-tight uppercase">
+                    <Trophy size={14} className="text-black dark:text-white" />
+                    <h3 className="text-sm font-black text-black dark:text-white italic tracking-tight uppercase">
                       {group.title}
                     </h3>
-                    <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white/50">
+                    <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-black/50 dark:text-white/50">
                       🛡️
                     </div>
                   </div>
-                  <div className="px-2 py-0.5 rounded-full bg-white/20 text-white text-[9px] font-black uppercase tracking-widest">
+                  <div className="px-2 py-0.5 rounded-full bg-white/20 text-black dark:text-white text-[9px] font-black uppercase tracking-widest">
                      Market Open
                   </div>
                 </div>
                 <div className="flex items-center justify-between px-1">
-                  <div className="flex items-center gap-2 text-[9px] font-bold text-white/60 uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-[9px] font-bold text-black/60 dark:text-white/60 uppercase tracking-widest">
                      <Clock size={10} /> Betting: {group.bettingTime}
                   </div>
-                  <div className="flex items-center gap-2 text-[9px] font-bold text-white/60 uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-[9px] font-bold text-black/60 dark:text-white/60 uppercase tracking-widest">
                      <Clock size={10} /> Match: {group.gameTime}
                   </div>
                 </div>
@@ -92,11 +91,11 @@ const MyBets: React.FC<MyBetsProps> = ({ placedBets }) => {
               <div className="px-6 py-5 overflow-x-auto scrollbar-hide">
                 <div className="min-w-[500px]">
                   <div className="grid grid-cols-5 gap-4 text-center border-b border-slate-100 dark:border-white/5 pb-3 mb-4">
-                    <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">select</span>
-                    <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">odds</span>
-                    <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">stake</span>
-                    <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">winnings</span>
-                    <span className="text-[9px] font-black text-slate-400 dark:text-white/20 uppercase tracking-widest">status</span>
+                    <span className="text-[9px] font-black text-slate-400 dark:text-white/60 uppercase tracking-widest">select</span>
+                    <span className="text-[9px] font-black text-slate-400 dark:text-white/60 uppercase tracking-widest">odds</span>
+                    <span className="text-[9px] font-black text-slate-400 dark:text-white/60 uppercase tracking-widest">stake</span>
+                    <span className="text-[9px] font-black text-slate-400 dark:text-white/60 uppercase tracking-widest">winnings</span>
+                    <span className="text-[9px] font-black text-slate-400 dark:text-white/60 uppercase tracking-widest">status</span>
                   </div>
 
                   {/* Table Rows */}

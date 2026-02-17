@@ -15,7 +15,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle, onBack, classN
       {onBack && (
         <button 
           onClick={onBack}
-          className="p-2.5 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-[#a11c1c] hover:text-white transition-all shadow-sm group shrink-0"
+          className="p-2.5 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-neon-red hover:text-white transition-all shadow-sm group shrink-0"
           aria-label="Go back"
         >
           <ArrowLeft size={18} />
