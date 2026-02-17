@@ -29,7 +29,7 @@ const ReferralFeePage: React.FC<ReferralFeePageProps> = ({ onBack }) => {
 
   return (
     <MDiv
-      className="max-w-5xl mx-auto py-6 space-y-8 w-full px-4 md:px-0"
+      className="max-w-5xl mx-auto lg:py-6 space-y-8 w-full lg:px-4 md:px-0"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -40,7 +40,7 @@ const ReferralFeePage: React.FC<ReferralFeePageProps> = ({ onBack }) => {
         onBack={onBack} 
       />
 
-      <div className="space-y-6">
+      <div className="space-y-4 lg:space-y-6">
         {/* Conversion Section */}
         <GlassCard className="p-6 md:p-8 border border-slate-200 dark:border-white/10 bg-white dark:bg-black/40 space-y-6">
           <div className="space-y-1">
@@ -88,7 +88,7 @@ const ReferralFeePage: React.FC<ReferralFeePageProps> = ({ onBack }) => {
           <h3 className="text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white pl-1">Recent 20 Commission Payments</h3>
           
           <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-black/40">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto scrollbar-hide">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-100 dark:bg-white/5 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-white/60">
@@ -103,12 +103,12 @@ const ReferralFeePage: React.FC<ReferralFeePageProps> = ({ onBack }) => {
                 <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                   {commissionData.map((row, idx) => (
                     <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors text-[11px] font-bold text-slate-700 dark:text-slate-200">
-                      <td className="p-3 text-center border-r border-slate-100 dark:border-white/5">{row.date}</td>
-                      <td className="p-3 text-center border-r border-slate-100 dark:border-white/5">{row.member}</td>
-                      <td className="p-3 text-center border-r border-slate-100 dark:border-white/5 text-neon-blue">$ {row.bet}</td>
-                      <td className="p-3 text-center border-r border-slate-100 dark:border-white/5 text-slate-400 dark:text-slate-500">{row.comm}</td>
-                      <td className="p-3 text-center border-r border-slate-100 dark:border-white/5 text-neon-red">$ {row.fee}</td>
-                      <td className="p-3 text-center font-black">$ {row.after}</td>
+                      <td className="p-3 text-center whitespace-nowrap border-r border-slate-100 dark:border-white/5">{row.date}</td>
+                      <td className="p-3 text-center whitespace-nowrap border-r border-slate-100 dark:border-white/5">{row.member}</td>
+                      <td className="p-3 text-center whitespace-nowrap border-r border-slate-100 dark:border-white/5 text-neon-blue">$ {row.bet}</td>
+                      <td className="p-3 text-center whitespace-nowrap border-r border-slate-100 dark:border-white/5 text-slate-400 dark:text-slate-500">{row.comm}</td>
+                      <td className="p-3 text-center whitespace-nowrap border-r border-slate-100 dark:border-white/5 text-neon-red">$ {row.fee}</td>
+                      <td className="p-3 text-center whitespace-nowrap font-black">$ {row.after}</td>
                     </tr>
                   ))}
                 </tbody>

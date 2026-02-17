@@ -28,7 +28,7 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
   const MDiv = motion.div as any;
 
   return (
-    <div className="py-6 space-y-8">
+    <div className="lg:py-6 space-y-8">
       {/* Back Button */}
       <button 
         onClick={onBack}
@@ -74,7 +74,7 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
         <div className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_50%,rgba(255,49,49,0.1),transparent_70%)]" />
         
         {/* Content Container */}
-        <div className="relative z-10 w-full px-8 md:px-20 py-12 flex flex-col items-center">
+        <div className="relative z-10 w-full px-4 md:px-20 py-6 flex flex-col items-center">
           
           {/* Top Badge */}
           <MDiv 
@@ -86,16 +86,16 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
             <span className="text-[10px] font-black text-white uppercase tracking-[0.3em]">LIVE BROADCAST ACTIVE</span>
           </MDiv>
 
-          <div className="flex flex-col md:flex-row items-center justify-between w-full gap-12 md:gap-0">
+          <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 lg:gap-0">
             {/* Home Team */}
             <MDiv 
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="flex flex-col items-center space-y-6 flex-1"
+              className="flex flex-col items-center space-y-3 lg:space-y-6 flex-1"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full scale-150 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-700" />
-                <div className="w-32 h-32 rounded-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110 group-hover/hero:-rotate-3 relative z-10">
+                <div className="lg:w-32 lg:h-32 w-20 h-20 rounded-3xl lg:rounded-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 p-3 lg:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110 group-hover/hero:-rotate-3 relative z-10">
                   <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="w-full h-full object-contain drop-shadow-2xl" />
                 </div>
               </div>
@@ -112,14 +112,14 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
               className="flex flex-col items-center flex-shrink-0"
             >
               <div className="flex items-center gap-8 md:gap-14">
-                <span className="text-8xl md:text-9xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110">
+                <span className="text-5xl md:text-9xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110">
                   {match.score?.home || 0}
                 </span>
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center w-5 lg:w-auto ms-3 gap-2 ">
                    <div className="w-2 h-2 rounded-full bg-white/20" />
                    <div className="w-2 h-2 rounded-full bg-white/20" />
                 </div>
-                <span className="text-8xl md:text-9xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110">
+                <span className="text-5xl md:text-9xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110">
                   {match.score?.away || 0}
                 </span>
               </div>
@@ -127,7 +127,7 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
               <MDiv 
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="mt-8 flex items-center gap-3 px-6 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-white/60 text-[11px] font-black uppercase tracking-[0.2em]"
+                className="mt-3 lg:mt-8 flex items-center gap-3 px-6 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-white/60 text-[11px] font-black uppercase tracking-[0.2em]"
               >
                 <Clock size={16} className="text-neon-red" />
                 <span>{match.time} IN GAME</span>
@@ -138,16 +138,16 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
             <MDiv 
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="flex flex-col items-center space-y-6 flex-1"
+              className="flex flex-col items-center space-y-3 lg:space-y-6 flex-1"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full scale-150 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-700" />
-                <div className="w-32 h-32 rounded-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110 group-hover/hero:rotate-3 relative z-10">
+                <div className="lg:w-32 lg:h-32 w-20 h-20 rounded-3xl lg:rounded-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/20 p-3 lg:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all group-hover/hero:scale-110 group-hover/hero:rotate-3 relative z-10">
                   <img src={match.awayTeam.logo} alt={match.awayTeam.name} className="w-full h-full object-contain drop-shadow-2xl" />
                 </div>
               </div>
               <div className="text-center">
-                <h2 className="text-2xl font-black italic tracking-tighter uppercase text-white drop-shadow-lg">{match.awayTeam.name}</h2>
+                <h2 className="text-lg lg:text-2xl font-black italic tracking-tighter uppercase text-white drop-shadow-lg">{match.awayTeam.name}</h2>
                 <p className="text-[9px] font-bold text-white/40 uppercase tracking-[0.4em] mt-1">Visitor Protocol</p>
               </div>
             </MDiv>
@@ -165,15 +165,15 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
       {/* Market Grid Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Betting Markets */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 lg:space-y-6">
           <div className="flex items-center gap-3">
              <Zap size={20} className="text-neon-red" />
              <h3 className="text-xl font-black italic tracking-tight uppercase text-slate-900 dark:text-white">AVAILABLE <span className="text-neon-red">MARKETS</span></h3>
           </div>
           
           <div className="space-y-4">
-            <GlassCard className="p-6 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f]">
-              <div className="flex items-center justify-between mb-6">
+            <GlassCard className="p-4 lg:p-6 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f]">
+              <div className="flex items-center justify-between mb-2 lg:mb-6">
                 <span className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-white/60">Match Result (1X2)</span>
                 <span className="px-3 py-1 rounded-lg bg-neon-red/10 text-neon-red text-[10px] font-black uppercase tracking-widest">POPULAR</span>
               </div>
@@ -184,8 +184,8 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
               </div>
             </GlassCard>
 
-            <GlassCard className="p-6 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f]">
-              <div className="flex items-center justify-between mb-6">
+            <GlassCard className="p-4 lg:p-6 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f]">
+              <div className="flex items-center justify-between mb-2 lg:mb-6">
                 <span className="text-[11px] font-black uppercase tracking-widest text-slate-500 dark:text-white/60">Double Chance</span>
               </div>
               <div className="grid grid-cols-3 gap-4">
@@ -198,12 +198,12 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
         </div>
 
         {/* Stats Panel */}
-        <div className="space-y-6">
+        <div className="space-y-4 lg:space-y-6">
            <div className="flex items-center gap-3">
               <Activity size={20} className="text-neon-red" />
               <h3 className="text-xl font-black italic tracking-tight uppercase text-slate-900 dark:text-white">LIVE <span className="text-neon-blue">STATS</span></h3>
            </div>
-           <GlassCard className="p-8 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f] space-y-10 shadow-xl">
+           <GlassCard className="p-4 lg:p-8 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0a0a0f] space-y-10 shadow-xl">
               <div className="space-y-3">
                 <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-white/20">
                   <span>Possession</span>

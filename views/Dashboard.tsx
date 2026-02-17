@@ -276,7 +276,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selec
         </div>
 
         {/* Matches Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 lg:pb-10">
           {filteredMatches.map((match) => {
             const selection = selectedSelections.find(s => s.matchId === match.id);
             const betId = selection ? `${match.id}-${selection.selection}` : undefined;

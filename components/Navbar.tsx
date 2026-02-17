@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute -right-15 lg:right-0 mt-4 w-80 bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[60] flex flex-col"
+                  className="absolute -right-9 lg:right-0 mt-4 w-80 bg-white dark:bg-[#0a0a0f] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[60] flex flex-col"
                 >
                   <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
                     <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Notifications</span>

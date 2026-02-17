@@ -71,7 +71,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Mobile Floating Toggle Button - Unchanged */}
           <button
             onClick={() => setIsMobileSlipOpen(!isMobileSlipOpen)}
-            className="lg:hidden fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-neon-red shadow-lg shadow-neon-red/30 flex items-center justify-center text-white active:scale-95 transition-all"
+            className="lg:hidden fixed bottom-6 right-6 z-30 w-12 h-12 rounded-full bg-neon-red shadow-lg shadow-neon-red/30 flex items-center justify-center text-white active:scale-95 transition-all"
           >
             <ShoppingCart size={24} />
           </button>

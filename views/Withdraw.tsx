@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import GlassCard from '../components/GlassCard';
 import { ChevronDown, Info, List } from 'lucide-react';
 import CustomSelect from '../components/CustomSelect';
+import { useRouter } from 'next/navigation';
 
 const WithdrawPage: React.FC = () => {
+  const router = useRouter();
   const [agreed, setAgreed] = useState(false);
   const [currency, setCurrency] = useState('USDT');
   const [method, setMethod] = useState('on-chain');
@@ -32,7 +34,10 @@ const WithdrawPage: React.FC = () => {
     <div className="max-w-6xl mx-auto lg:py-6 space-y-6 w-full">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-black text-slate-900 dark:text-white italic tracking-tight uppercase">Withdraw</h1>
-        <button className="flex items-center gap-2 bg-neon-red/10 border border-neon-red px-4 py-1.5 rounded-full text-neon-red hover:bg-neon-red hover:text-white transition-all group">
+        <button 
+          onClick={() => router.push('/withdrawal-list')}
+          className="flex items-center gap-2 bg-neon-red/10 border border-neon-red px-4 py-1.5 rounded-full text-neon-red hover:bg-neon-red hover:text-white transition-all group"
+        >
           <List size={14} />
           <span className="text-[10px] font-black uppercase tracking-widest">Withdraw List</span>
         </button>
