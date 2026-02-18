@@ -90,9 +90,6 @@ export default function LoginPage() {
     }
 
     // AUTHENTICATION CHECK
-    // Debugging logs to help identify issues
-    console.log("Attempting login with:", { email, password });
-    console.log("Expected credentials:", VALID_CREDENTIALS);
 
     if (!VALID_CREDENTIALS.email || !VALID_CREDENTIALS.password) {
       console.error("Environment variables are undefined. Please restart the dev server if you just added .env.local");

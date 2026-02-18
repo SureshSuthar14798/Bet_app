@@ -21,7 +21,6 @@ const SupportPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Submitting consultation:', formData);
     alert('Your inquiry has been sent to our support team.');
   };
 

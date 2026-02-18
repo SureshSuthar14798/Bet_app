@@ -67,7 +67,7 @@ const MatchCard: React.FC<MatchCardProps> = ({ match, onBetSelect, selectedBetId
         </div>
 
         {/* Hero Area */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
+        <div className="relative h-48 overflow-hidden bg-slate-950">
           {/* Static Fallback / Background Image */}
           <div 
             className={`absolute inset-0 z-0 bg-cover bg-center transition-all duration-1000 group-hover/card:scale-110 ${showVideo ? 'opacity-0' : 'opacity-100'}`}
@@ -87,7 +87,7 @@ const MatchCard: React.FC<MatchCardProps> = ({ match, onBetSelect, selectedBetId
           
           {/* Gradient Overlays for Readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#08080c] via-transparent to-transparent z-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-20" />
+          {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-20" /> */}
 
           {/* Top Info Bar */}
           <div className="absolute top-4 left-5 z-30">

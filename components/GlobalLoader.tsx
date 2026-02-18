@@ -34,7 +34,7 @@ const GlobalLoader: React.FC = () => {
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-red/10 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="relative flex flex-col items-center gap-12">
+      <div className="relative flex flex-col items-center gap-6">
         <AnimatedLogo size="xl" />
         
         <div className="space-y-4 w-64 text-center">

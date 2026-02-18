@@ -12,14 +12,14 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 'md', className = ''
     sm: 'w-8 h-8',
     md: 'w-12 h-12',
     lg: 'w-24 h-24',
-    xl: 'w-40 h-40'
+    xl: 'w-24 h-24 md:w-40 md:h-40'
   };
 
   const iconSizes = {
     sm: 'text-lg',
     md: 'text-2xl',
     lg: 'text-5xl',
-    xl: 'text-7xl'
+    xl: 'text-5xl md:text-7xl'
   };
 
   // Use locally casted components to resolve environment-specific TS errors where motion props are not recognized
@@ -53,9 +53,9 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 'md', className = ''
       <MDiv
         animate={{ rotate: -360 }}
         transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-[-10%] border border-neon-lime/20 rounded-full"
+        className="absolute inset-[-10%] border border-neon-red/20 rounded-full"
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-neon-lime rounded-full shadow-[0_0_10px_#ccff00]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-neon-red rounded-full shadow-[0_0_10px_#ccff00]" />
       </MDiv>
     </div>
   );
