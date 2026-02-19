@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Match, BetSelection } from '../types';
+import { Match } from '../types';
 import GlassCard from '../components/GlassCard';
 import OddsButton from '../components/OddsButton';
-import { MapPin, Radio, Activity, BarChart3, Clock, Zap } from 'lucide-react';
+import { Activity,  Clock, Zap } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 
 interface MatchDetailsProps {
@@ -15,13 +15,39 @@ interface MatchDetailsProps {
 }
 
 const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect, selectedBetId }) => {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const handleHoverStart = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      videoRef.current.volume = 0.5;
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(e => console.log("Play error:", e));
+    }
+  };
+
+  const handleHoverEnd = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      videoRef.current.muted = true;
+    }
+  };
   // Select background based on sport
   const bgImages: Record<string, string> = {
-    'Football': 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2070&auto=format&fit=crop',
-    'Basketball': 'https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=2070&auto=format&fit=crop',
-    'Tennis': 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=2070&auto=format&fit=crop',
-    'default': 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2070&auto=format&fit=crop'
+    'Football': '/images/football.jpg',
+    'Basketball': '/images/basketball.jpg',
+    'Baseball': '/images/baseball.jpg',
+    'default': '/images/default.jpg'
   };
+
+  const sportVideos: Record<string, string> = {
+    'Football': '/videos/bgFootball.mp4',
+    'Basketball': '/videos/bgBasketball.mp4',
+    'Baseball': '/videos/bgBaseball.mp4',
+  };
+
+  const videoSrc = sportVideos[match.sport] || match.videoUrl;
 
   const heroBg = bgImages[match.sport] || bgImages.default;
 
@@ -39,12 +65,14 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
       {/* Hero Header with Animated Background */}
       <MDiv 
         whileHover="hover"
+        onHoverStart={handleHoverStart}
+        onHoverEnd={handleHoverEnd}
         className="relative rounded-[3rem] overflow-hidden min-h-[420px] flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-2xl group/hero bg-black"
       >
         {/* Cinematic Background Layer */}
         <MDiv
           variants={{
-            hover: { scale: 1.1, filter: 'brightness(0.7) saturate(1.2)' }
+            hover: { scale: 1.1, filter: 'brightness(1) saturate(1.2)' }
           }}
           animate={{ 
             scale: [1, 1.05, 1],
@@ -61,8 +89,20 @@ const MatchDetails: React.FC<MatchDetailsProps> = ({ match, onBack, onBetSelect,
           <img 
             src={heroBg} 
             alt="Stadium Background" 
-            className="w-full h-full object-cover opacity-40 grayscale-[0.3]"
+            className="w-full h-full object-cover opacity-40 grayscale-[0.3] group-hover/hero:opacity-0 transition-opacity duration-700"
           />
+          {videoSrc && (
+            <video
+              ref={videoRef}
+              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover/hero:opacity-100 transition-opacity duration-700"
+              loop
+              muted
+              playsInline
+              crossOrigin="anonymous"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
         </MDiv>
 
         {/* Dynamic Gradient Overlays */}

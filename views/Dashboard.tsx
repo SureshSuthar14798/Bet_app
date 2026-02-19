@@ -125,8 +125,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selec
           {/* Animated Background Image (Ken Burns Effect) */}
           <MDiv 
             className="absolute inset-0 z-0"
-            initial={{ scale: 1.2, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            // initial={{ scale: 1.2, opacity: 0 }}
+            // animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
           >
             <video 
@@ -142,16 +142,16 @@ const Dashboard: React.FC<DashboardProps> = ({ onBetSelect, onMatchSelect, selec
               loop 
               playsInline
               preload="auto"
-              poster="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2070&auto=format&fit=crop"
+              poster="/images/football.jpg"
               className="w-full h-full object-cover opacity-80"
             >
-              <source src="/videos/stadium-bg.mp4" type="video/mp4" />
+              <source src="/videos/bgFootball.mp4" type="video/mp4" />
             </video>
           </MDiv>
 
           {/* Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/10 to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent z-10" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent z-10" /> */}
           
           <div className="relative z-20 px-8 lg:px-12 max-w-2xl space-y-4 lg:space-y-6">
             <MDiv 
