@@ -24,11 +24,11 @@ const SupportPage: React.FC = () => {
     alert('Your inquiry has been sent to our support team.');
   };
 
-  const inputBaseClasses = "w-full bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 px-5 py-3.5 text-slate-900 dark:text-white font-black focus:outline-none focus:ring-2 focus:ring-neon-blue/20 transition-all rounded-xl";
+  const inputBaseClasses = "w-full bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 p-3 lg:px-5 lg:py-3.5 text-slate-900 dark:text-white font-black text-sm focus:outline-none focus:ring-2 focus:ring-neon-blue/20 rounded-xl";
 
   return (
-    <div className="max-w-4xl mx-auto py-4 px-3 md:py-10 md:px-4">
-      <div className="relative p-5 md:p-12 border border-slate-200 dark:border-white/10 bg-white dark:bg-black/60 rounded-3xl md:rounded-[2.5rem] shadow-2xl transition-all duration-300">
+    <div className="max-w-4xl mx-auto lg:py-10 lg:px-4">
+      <div className="relative p-5 md:p-12 border border-slate-200 dark:border-white/10 bg-white dark:bg-black/60 rounded-3xl md:rounded-[2.5rem] shadow-2xl duration-300">
         
         <div className="space-y-6 md:space-y-8 relative z-10">
           <section className="space-y-3 md:space-y-4">

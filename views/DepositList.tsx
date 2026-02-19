@@ -41,7 +41,7 @@ const DepositList: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`flex-1 md:flex-none px-4 md:px-6 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all whitespace-nowrap
+              className={`flex-1 md:flex-none px-2 outline-none md:px-6 py-2.5 text-[10px] font-black uppercase tracking-widest rounded-lg whitespace-nowrap
                 ${activeFilter === filter 
                   ? 'bg-white dark:bg-[#1a1a25] text-neon-red shadow-sm border border-slate-200 dark:border-white/10' 
                   : 'text-slate-400 dark:text-white/40 hover:text-slate-700 dark:hover:text-white'}

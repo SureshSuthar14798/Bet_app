@@ -90,7 +90,7 @@ const WithdrawPage: React.FC = () => {
                 <input
                   type="text"
                   defaultValue="TTNYzj88EyX1EyQhaebExo8sYDzDtShm34"
-                  className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl py-3.5 px-5 text-[13px] font-black text-slate-900 dark:text-white focus:outline-none focus:border-neon-red/30 focus:bg-slate-50 dark:focus:bg-white/5 transition-all"
+                  className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl py-3.5 px-5 text-[13px] font-black text-slate-900 dark:text-white focus:outline-none focus:border-neon-red/30 focus:bg-slate-50 dark:focus:bg-white/5"
                 />
               </div>
             </div>
@@ -108,7 +108,7 @@ const WithdrawPage: React.FC = () => {
               <input
                 type="text"
                 placeholder="Enter amount"
-                className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl py-3.5 px-5 pr-24 text-sm font-black text-slate-900 dark:text-white focus:outline-none focus:border-neon-red/30 focus:bg-slate-50 dark:focus:bg-white/5 transition-all"
+                className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl py-3.5 px-5 pr-24 text-sm font-black text-slate-900 dark:text-white focus:outline-none focus:border-neon-red/30 focus:bg-slate-50 dark:focus:bg-white/5"
               />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3">
                 <span className="text-[11px] font-bold text-slate-400 dark:text-white/20 uppercase tracking-widest">USDT</span>

@@ -47,7 +47,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onChange, l
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full bg-white dark:bg-black/40 border rounded-xl py-3.5 px-2 text-sm font-black text-slate-900 dark:text-white flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-all outline-none group 
+        className={`w-full bg-white dark:bg-black/40 border rounded-xl py-2.5 px-3 text-sm font-black text-slate-900 dark:text-white flex items-center justify-between hover:bg-slate-50 dark:hover:bg-white/5 transition-all outline-none group 
           ${isOpen
             ? 'border-neon-red/40 ring-2 ring-neon-red/10 dark:ring-neon-red/20'
             : 'border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20'

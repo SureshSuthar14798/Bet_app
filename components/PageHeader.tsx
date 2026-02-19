@@ -11,7 +11,7 @@ interface PageHeaderProps {
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle, onBack, className = '' }) => {
   return (
-    <div className={`flex items-center lg:gap-4 gap-1 ${className}`}>
+    <div className={`flex items-center lg:gap-4 gap-2 ${className}`}>
       {onBack && (
         <button 
           onClick={onBack}
