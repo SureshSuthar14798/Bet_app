@@ -26,7 +26,7 @@ const BettingContext = createContext<BettingContextType | undefined>(undefined);
 export const BettingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User>({
     name: 'Alex Rivera',
-    email: 'gusdnd8448@gmail.com',
+    email: 'admin@gmail.com',
     balance: 2450.80,
     currency: 'USD',
     avatar: 'https://picsum.photos/seed/user1/100/100',
