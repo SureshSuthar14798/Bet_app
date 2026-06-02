@@ -10,20 +10,14 @@ import { CheckCircle2, ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { showBetSuccess, isAuth } = useBetting();
+  const { showBetSuccess } = useBetting();
   const router = useRouter();
   const MDiv = motion.div as any;
   const [isMobileSlipOpen, setIsMobileSlipOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if (!isAuth) {
-      router.push('/login');
-    }
-  }, [isAuth, router]);
-
-  if (!isAuth) {
-    return null;
-  }
+    // Auth redirect removed
+  }, [router]);
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-slate-100 dark:bg-[#050508]">

@@ -4,16 +4,11 @@ import { useRouter } from 'next/navigation';
 import { useBetting } from '@/components/providers/BettingProvider';
 
 export default function Home() {
-  const { isAuth } = useBetting();
   const router = useRouter();
 
   useEffect(() => {
-    if (isAuth) {
-      router.push('/home');
-    } else {
-      router.push('/login');
-    }
-  }, [isAuth, router]);
+    router.push('/home');
+  }, [router]);
 
   return (
     <div className="flex items-center justify-center h-screen bg-black text-[#ff3131]">
