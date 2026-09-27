@@ -18,6 +18,7 @@ const BettingSlip: React.FC = () => {
   const wagerValue = parseFloat(stake) || 0;
   
   // Find the match for the first selection to get the profit rate
+  // New Code
   const firstMatch = selections.length > 0 ? MOCK_MATCHES.find(m => m.id === selections[0].matchId) : null;
   const profitPercentage = firstMatch?.profit || '0.57%';
   const profitRateValue = parseFloat(profitPercentage) / 100;
