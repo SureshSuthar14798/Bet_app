@@ -52,14 +52,27 @@ test('every lucide-react icon imported by the app is exported', () => {
   assert.deepEqual([...missing], [], `Unknown lucide-react exports: ${[...missing].join(', ')}`);
 });
 
-test('lucide-react provides the icons from the 1.75.0 release', () => {
+test('lucide-react provides the icons from the 1.83.0 release', () => {
   const installedVersion = require('lucide-react/package.json').version;
   assert.ok(
-    installedVersion.localeCompare('1.75.0', undefined, { numeric: true }) >= 0,
-    `lucide-react must be at least 1.75.0, found ${installedVersion}`,
+    installedVersion.localeCompare('1.83.0', undefined, { numeric: true }) >= 0,
+    `lucide-react must be at least 1.83.0, found ${installedVersion}`,
   );
 
-  for (const icon of ['Jacket', 'PaintGun', 'SprayCan']) {
+  for (const icon of [
+    'MailSend',
+    'StairsArrowDownLeft',
+    'StairsArrowUpRight',
+    'SquareTextAlignBottomCenter',
+    'SquareTextAlignBottomLeft',
+    'SquareTextAlignBottomRight',
+    'ChevronsDownUpOffset',
+    'ChevronsRightLeftOffset',
+    'BoxingGlove',
+    'Balcony',
+    'ListClock',
+    'PartyPopper',
+  ]) {
     assert.ok(icon in lucide, `lucide-react is missing the ${icon} icon`);
   }
 });
